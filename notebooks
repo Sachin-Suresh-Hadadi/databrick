@@ -1,0 +1,41 @@
+# Databricks notebook source
+AccessKey = dbutils.secrets.get(scope='sachin' , key='accessskey')
+
+# COMMAND ----------
+
+storage_account_name = 'sachinsstirageaccount'
+storage_account_access_key = AccessKey
+container_name = 'source'
+mount_point = "/mnt/source"
+dbutils.fs.unmount(mount_point)
+
+dbutils.fs.mount(
+  source=f"wasbs://{container_name}@{storage_account_name}.blob.core.windows.net",
+  mount_point=mount_point,
+  extra_configs={
+    f"fs.azure.account.key.{storage_account_name}.blob.core.windows.net": storage_account_access_key
+  }
+)
+
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC CREATE OR REPLACE TEMPORARY VIEW csv_data
+# MAGIC USING csv
+# MAGIC OPTIONS (
+# MAGIC   path "/mnt/source/netflix_titles.csv",
+# MAGIC   header "true"
+# MAGIC );
+# MAGIC DROP TABLE IF EXISTS filtered;
+# MAGIC CREATE TABLE filtered
+# MAGIC AS
+# MAGIC SELECT * FROM csv_data WHERE date_added LIKE 'January 1, 20__' and type like 'Movie'
+
+# COMMAND ----------
+
+storage_account_name = 'sachinsstirageaccount'
+storage_account_access_key = AccessKey
+container_name = 'output'
+result = spark.sql("select count(*) from filtered")
+result.write.format("csv").mode("overwrite").option(f"fs.azure.account.key.{storage_account_name}.blob.core.windows.net", f"{storage_account_access_key}").save(f"wasbs://{container_name}@{storage_account_name}.blob.core.windows.net/output.csv")
