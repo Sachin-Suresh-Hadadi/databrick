@@ -22,15 +22,15 @@ steps:
       python -m pip install databricks-cli
       databricks configure --token "$(DATABRICKS_ACCESS_TOKEN)" --url "$(DATABRICKS_WORKSPACE_URL)"
   - task: Bash@3
-     inputs:
+    inputs:
        targetType: 'inline'
        script: |
          databricks workspace import --format SOURCE --language PYTHON --overwrite '/HelloWorld' << EOF
          print("Hello, World!")
          EOF
 
-   - task: Bash@3
-     inputs:
+  - task: Bash@3
+    inputs:
        targetType: 'inline'
        script: |
          databricks runs submit --json '{ "notebook_path": "/HelloWorld" }' --cluster-id "$(DATABRICKS_CLUSTER_ID)"
