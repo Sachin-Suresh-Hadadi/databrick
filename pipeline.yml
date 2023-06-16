@@ -32,7 +32,7 @@ steps:
    displayName: 'Upgrade pip & install databricks-cli'  
 
   
-  - task: Bash@3
+ - task: Bash@3
     inputs:
        targetType: 'inline'
        script: |
@@ -40,7 +40,7 @@ steps:
          print("Hello, World!")
          EOF
 
-   - task: Bash@3
+  - task: Bash@3
      inputs:
         targetType: 'inline'
         script: |
