@@ -30,9 +30,10 @@ steps:
      pip install databricks-cli
      databricks --version
      #databricks configure --token "$(DATABRICKS_ACCESS_TOKEN)"
-     databricks secrets list-scopes
-     databricks secrets create-scope --scope sachin
-     databricks secrets list-scopes
+     #databricks secrets create-scope --scope sachin
+     #databricks secrets list-scopes
+     databricks workspace import --language PYTHON  my_notebook.py /notebooks/pynotebook
+
     displayName: 'Upgrade pip & install databricks-cli'  
 
   #- script: | 
