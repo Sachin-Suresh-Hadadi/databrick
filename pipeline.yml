@@ -10,12 +10,15 @@ variables:
     value: $(WorkspaceUrl)
   - name: DATABRICKS_CLUSTER_ID
     value: $(ClusterId)
+  - name: GITHUB_TOKEN 
+    value: $(github_token)
 
 steps:
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.x'
+      versionSpec: '3.8.x'
       addToPath: true
+      TOKEN: "$(GITHUB_TOKEN)"
 
   - script: |
       python -m pip install databricks-cli
