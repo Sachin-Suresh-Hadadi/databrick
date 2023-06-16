@@ -31,15 +31,22 @@ steps:
      databricks --version
     displayName: 'Upgrade pip & install databricks-cli'  
 
-  
-  - task: Bash@3
-    inputs:
-       targetType: 'inline'
-       script: |
-         databricks workspace import --source-path notebooks --target-path /notebooks/helloworld.py
+  - script: | 
+     echo "Logging in to Databricks CLI..."
+     #echo "$(databricksHost) 
+     #$(databricksToken)" | databricks configure --token
+     echo -e "[DEFAULT]\nhost = $(DATABRICKS_WORKSPACE_URL)\ntoken = $(DATABRICKS_ACCESS_TOKEN)" > ~/.databrickscfg
+     echo "Testing connection to Databricks workspace..."
+     databricks workspace ls
+    displayName: 'Log in to Databricks CLI and test connection'
+  #- task: Bash@3
+    #inputs:
+    #   targetType: 'inline'
+    #   script: |
+    #     databricks workspace import --source-path notebooks --target-path /notebooks/helloworld.py
 
-  - task: Bash@3
-    inputs:
-        targetType: 'inline'
-        script: |
-          databricks runs submit --json '{ "notebook_path": "/HelloWorld" }' --cluster-id "$(DATABRICKS_CLUSTER_ID)"
+ # - task: Bash@3
+  #  inputs:
+    #    targetType: 'inline'
+   #     script: |
+       #   databricks runs submit --json '{ "notebook_path": "/HelloWorld" }' --cluster-id "$(DATABRICKS_CLUSTER_ID)"
