@@ -39,6 +39,7 @@ steps:
      pip install databricks-cli
      databricks --version
      databricks workspace import --language PYTHON  my_notebook.py /notebooks/pynotebook
+     databricks workspace import --language PYTHON  my_notebook.py /notebooks/pynotebook
 
     displayName: 'Upgrade pip & install databricks-cli'  
 
