@@ -36,9 +36,7 @@ steps:
     inputs:
        targetType: 'inline'
        script: |
-         databricks workspace import --format SOURCE --language PYTHON --overwrite '/HelloWorld' << EOF
-         print("Hello, World!")
-         EOF
+         databricks workspace import --source-path notebooks --target-path /notebooks/helloworld.py
 
   - task: Bash@3
     inputs:
