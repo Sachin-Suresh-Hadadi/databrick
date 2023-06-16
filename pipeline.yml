@@ -23,7 +23,7 @@ steps:
 
   - script: |
       python -m pip install databricks-cli
-      databricks configure --token "$(DATABRICKS_ACCESS_TOKEN)" --url "$(DATABRICKS_WORKSPACE_URL)"
+      databricks configure --token "$(DATABRICKS_ACCESS_TOKEN)" 
   - task: Bash@3
     inputs:
        targetType: 'inline'
