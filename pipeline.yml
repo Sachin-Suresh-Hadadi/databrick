@@ -13,13 +13,13 @@ variables:
   - name: GITHUB_TOKEN 
     value: $(github_token)
 
-steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: '3.11.2'
-      architecture: 'x64' 
-      addToPath: true
-      TOKEN: "$(GITHUB_TOKEN)"
+#steps:
+ # - task: UsePythonVersion@0
+   # inputs:
+   #   versionSpec: '3.11.2'
+   #   architecture: 'x64' 
+   #   addToPath: true
+    #  TOKEN: "$(GITHUB_TOKEN)"
 
   - script: |
       python -m pip install databricks-cli
