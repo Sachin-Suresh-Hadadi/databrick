@@ -34,7 +34,9 @@ steps:
      #databricks secrets list-scopes
      python3 --version
      pip3 --version
-     databricks workspace import --language PYTHON  my_notebook.py /notebooks/pynotebook
+     pip install databricks-cli
+     databricks --version
+     #databricks workspace import --language PYTHON  my_notebook.py /notebooks/pynotebook
 
     displayName: 'Upgrade pip & install databricks-cli'  
 
