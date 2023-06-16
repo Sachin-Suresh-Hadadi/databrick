@@ -29,16 +29,17 @@ steps:
      python -m pip install --upgrade pip
      pip install databricks-cli
      databricks --version
+     databricks configure --token "$(DATABRICKS_ACCESS_TOKEN)"
     displayName: 'Upgrade pip & install databricks-cli'  
 
-  - script: | 
-     echo "Logging in to Databricks CLI..."
+  #- script: | 
+     #echo "Logging in to Databricks CLI..."
      #echo "$(databricksHost) 
      #$(databricksToken)" | databricks configure --token
-     echo -e "[DEFAULT]\nhost = $(DATABRICKS_WORKSPACE_URL)\ntoken = $(DATABRICKS_ACCESS_TOKEN)" > ~/.databrickscfg
-     echo "Testing connection to Databricks workspace..."
-     databricks workspace ls
-    displayName: 'Log in to Databricks CLI and test connection'
+     #echo -e "[DEFAULT]\nhost = $(DATABRICKS_WORKSPACE_URL)\ntoken = $(DATABRICKS_ACCESS_TOKEN)" > ~/.databrickscfg
+     #echo "Testing connection to Databricks workspace..."
+     #databricks workspace ls
+    #displayName: 'Log in to Databricks CLI and test connection'
   #- task: Bash@3
     #inputs:
     #   targetType: 'inline'
