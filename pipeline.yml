@@ -40,8 +40,8 @@ steps:
          print("Hello, World!")
          EOF
 
-  - task: Bash@3
-    inputs:
-       targetType: 'inline'
-       script: |
-         databricks runs submit --json '{ "notebook_path": "/HelloWorld" }' --cluster-id "$(DATABRICKS_CLUSTER_ID)"
+   - task: Bash@3
+     inputs:
+        targetType: 'inline'
+        script: |
+          databricks runs submit --json '{ "notebook_path": "/HelloWorld" }' --cluster-id "$(DATABRICKS_CLUSTER_ID)"
