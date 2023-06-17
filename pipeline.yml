@@ -22,7 +22,13 @@ steps:
      pip install databricks-cli
      databricks --version
 
-  
+  - script: |
+     databricks configure --token << EOF
+     $(WorkspaceUrl)
+     $(Accesskey)
+     EOF
+    displayName: 'logged into databricks'
+     
 
   - script: |  
      databricks workspace rm --recursive /notebooks
