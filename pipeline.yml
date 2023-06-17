@@ -9,14 +9,6 @@ variables:
 steps:
   
   - script: | 
-     #python -m pip install --upgrade pip
-     #pip install databricks-cli
-     #databricks --version
-     #databricks configure --token "$(DATABRICKS_ACCESS_TOKEN)"
-     #databricks secrets create-scope --scope sachin
-     #databricks secrets list-scopes
-     python3 --version
-     pip3 --version
      python3 -m venv env
      source env/bin/activate
      pip install databricks-cli
@@ -30,26 +22,5 @@ steps:
      
 
   - script: |  
-     databricks workspace rm --recursive /notebooks
-     databricks workspace import --language PYTHON  my_notebook.py /notebooks/pynotebook
-    displayName: 'Upgrade pip & install databricks-cli'  
-
-  #- script: | 
-     #echo "Logging in to Databricks CLI..."
-     #echo "$(databricksHost) 
-     #$(databricksToken)" | databricks configure --token
-     #echo -e "[DEFAULT]\nhost = $(DATABRICKS_WORKSPACE_URL)\ntoken = $(DATABRICKS_ACCESS_TOKEN)" > ~/.databrickscfg
-     #echo "Testing connection to Databricks workspace..."
-     #databricks workspace ls
-    #displayName: 'Log in to Databricks CLI and test connection'
-  #- task: Bash@3
-    #inputs:
-    #   targetType: 'inline'
-    #   script: |
-    #     databricks workspace import --source-path notebooks --target-path /notebooks/helloworld.py
-
- # - task: Bash@3
-  #  inputs:
-    #    targetType: 'inline'
-   #     script: |
-       #   databricks runs submit --json '{ "notebook_path": "/HelloWorld" }' --cluster-id "$(DATABRICKS_CLUSTER_ID)"
+     databricks workspace import --language PYTHON -o my_notebook.py /sacnotebook.py
+    displayName: 'added notebook'  
