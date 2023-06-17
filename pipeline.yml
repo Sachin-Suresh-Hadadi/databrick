@@ -23,10 +23,9 @@ steps:
      databricks --version
 
   - script: |
-     databricks configure --token << EOF
-     $(WorkspaceUrl)
-     $(Accesskey)
-     EOF
+     DATABRICKS_AAD_TOKEN=$(Accesskey)
+     exoprt DATABRICKS_AAD_TOKEN
+     echo $(WorkspaceUrl) | databricks configure --aad-token
     displayName: 'logged into databricks'
      
 
