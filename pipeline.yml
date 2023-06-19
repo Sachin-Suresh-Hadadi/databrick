@@ -31,6 +31,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-     PathtoPublish: /home/sigmoid/myagent/workdir/2/s/my_notebook.py
+     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
      ArtifactName: 'drop'
      publishLocation: 'Container'
