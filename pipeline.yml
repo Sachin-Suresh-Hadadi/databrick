@@ -30,6 +30,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-     PathtoPublish: /
+     PathtoPublish: /home/sigmoid/myagent/workdir/2/s
      ArtifactName: 'drop'
      publishLocation: 'Container'
