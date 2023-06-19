@@ -28,12 +28,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: /home/sigmoid/databrick/pipeline.yml
-      ArtifactName: 'drop'
-      publishLocation: 'Container'
-
-  - task: PublishBuildArtifacts@1
-    inputs:
      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
      ArtifactName: 'drop'
      publishLocation: 'Container'
