@@ -24,10 +24,11 @@ steps:
 
   - script: |  
      databricks workspace import --language PYTHON -o my_notebook.py /sacnotebook.py
+     ls
     displayName: 'added notebook'  
 
   - task: PublishBuildArtifacts@1
     inputs:
-     PathtoPublish: /*
+     PathtoPublish: /
      ArtifactName: 'drop'
      publishLocation: 'Container'
