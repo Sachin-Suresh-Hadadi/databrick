@@ -30,6 +30,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-     PathtoPublish: /home/sigmoid/myagent/workdir/2/s
+     PathtoPublish: /home/sigmoid/myagent/workdir/2/s/my_notebook.py
      ArtifactName: 'drop'
      publishLocation: 'Container'
