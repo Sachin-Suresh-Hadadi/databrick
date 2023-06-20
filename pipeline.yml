@@ -21,7 +21,7 @@ steps:
 
   - task: CopyPublishBuildArtifacts@1
     inputs:
-      #CopyRoot: '$(Build.Repository.LocalPath)'
+      CopyRoot: $(Build.ArtifactStagingDirectory)
       Contents: '**'
       ArtifactName: 'databricks'
       ArtifactType: 'Container'
