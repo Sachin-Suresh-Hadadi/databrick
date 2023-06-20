@@ -19,8 +19,11 @@ steps:
      databricks workspace import --language PYTHON -o my_notebook.py /sacnotebook.py
     displayName: 'added notebook'  
 
-  - task: PublishBuildArtifacts@1
+  - task: CopyPublishBuildArtifacts@1
     inputs:
-     PathtoPublish: '$(Build.Repository.LocalPath)'
-     ArtifactName: 'drop'
-     publishLocation: 'Container'
+      CopyRoot: '''$(Build.Repository.LocalPath)'''
+      Contents: '**'
+      ArtifactName: 'databricks'
+      ArtifactType: 'Container'
+     
+  
