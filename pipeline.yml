@@ -23,12 +23,10 @@ steps:
 
   - script: |  
      databricks workspace import --language PYTHON -o my_notebook.py /sacnotebook.py
-     echo '$(Build.ArtifactStagingDirectory)'
-     echo '$(Build.Repository.LocalPath)'
     displayName: 'added notebook'  
 
-  #- task: PublishBuildArtifacts@1
-    #inputs:
-    # PathtoPublish: /home/sigmoid/myagent/workdir/2/s
-     #ArtifactName: 'drop'
-     #publishLocation: 'Container'
+  - task: PublishBuildArtifacts@1
+    inputs:
+     PathtoPublish: '$(Build.Repository.LocalPath)'
+     ArtifactName: 'drop'
+     publishLocation: 'Container'
