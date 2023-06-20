@@ -15,11 +15,7 @@ steps:
      pip install databricks-cli
      databricks --version
      exoprt DATABRICKS_AAD_TOKEN='$(Accesskey)'
-     echo $(WorkspaceUrl) | databricks configure --aad-token
-    displayName: 'logged into databricks'
-     
-
-  - script: |  
+     echo $(WorkspaceUrl) | databricks configure --aad-token 
      databricks workspace import --language PYTHON -o my_notebook.py /sacnotebook.py
     displayName: 'added notebook'  
 
