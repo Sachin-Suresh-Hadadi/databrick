@@ -15,10 +15,10 @@ steps:
      pip install databricks-cli
      databricks --version
 
-  #- script: |
-     #exoprt DATABRICKS_AAD_TOKEN='$(Accesskey)'
-     #echo $(WorkspaceUrl) | databricks configure --aad-token
-    #displayName: 'logged into databricks'
+  - script: |
+     exoprt DATABRICKS_AAD_TOKEN='$(Accesskey)'
+     echo $(WorkspaceUrl) | databricks configure --aad-token
+    displayName: 'logged into databricks'
      
 
   - script: |  
